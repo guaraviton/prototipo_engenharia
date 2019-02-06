@@ -1,0 +1,123 @@
+<meta charset="UTF-8"> 
+<html>
+<head>
+  <title>Balanceamento</title>
+  <style type="text/css">
+    .chartWithOverlay {
+      position: relative;  
+    }
+
+  .overlay > div{
+      position: absolute;
+      top: 63px;
+      left: 190px;
+      font-size: 15px;
+      color: #444; 
+      font-family: 'Arial'; 
+  }
+
+  div .overlay > .faixa {
+      font-size: 12px;
+  }
+
+  div .overlay > .periodo {
+      margin-top: 375px;
+      width: 896px;
+      left: 184px;
+     display: flex;
+  }
+
+  div .overlay > .data {
+      margin-top: 397px;
+      width: 896px;
+      left: 184px;
+     display: flex;
+  }
+
+  .line-container {
+  display: flex;
+  align-items: center;
+  }
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background: black;
+  position: relative;
+}
+
+.line.arrow-right:after {
+  position: absolute;
+  content: '';
+  bottom: -6px;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid black;
+}
+
+.line.arrow-left:after {
+  position: absolute;
+  content: '';
+  top: -6px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 6px solid black;
+}
+.line-container label {
+  margin: 0 5px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="chartWithOverlay">
+    <div id="balanceamento" style="height: 500px"></div>
+    <div class="overlay">
+      <div class="faixa">
+        <div style="margin-top:55px;">Faixa Crítica</div>
+        <div style="margin-top:36px;">Faixa</div>
+        <div style="margin-top:61px;">Faixa</div>
+        <div style="margin-top:62px;">Faixa</div>
+        <div style="margin-top:40px;">Faixa</div>
+      </div>
+      <div class="periodo">
+        <div class="line-container" style="width: 50%;">
+          <span class="line arrow-left"></span>
+          <label>D-1
+          </label>
+          <span class="line arrow-right"></span>
+        </div>
+        <div class="line-container" style="width: 50%;">
+          <span class="line arrow-left"></span>
+          <label>D
+          </label>
+          <span class="line arrow-right"></span>
+        </div>
+      </div>
+      <div class="data">
+        <div class="line-container" style="width: 338px;">
+          <span class="line arrow-left"></span>
+          <label>05/02/2019
+          </label>
+          <span class="line arrow-right"></span>
+        </div>
+        <div class="line-container" style="width: 558px;">
+          <span class="line arrow-left"></span>
+          <label>06/02/2019
+          </label>
+          <span class="line arrow-right"></span>
+        </div>
+      </div>
+   </div>
+ </div>
+  <button id="adicionarPonto">Adicionar Ponto</button>
+</html>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="dados.js"></script>
+<script type="text/javascript" src="app.js"></script>
