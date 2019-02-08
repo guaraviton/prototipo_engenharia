@@ -1,129 +1,64 @@
-<meta charset="UTF-8"> 
-<html>
-<head>
-  <title>Balanceamento</title>
-  <style type="text/css">
-    .chartWithOverlay {
-      position: relative;  
-    }
-
-  .overlay > div{
-      position: absolute;
-      top: 63px;
-      left: 190px;
-      font-size: 15px;
-      color: #444; 
-      font-family: 'Arial'; 
-  }
-
-  div .overlay > .faixa {
-      font-size: 12px;
-  }
-
-  div .overlay > .periodo {
-      margin-top: 375px;
-      width: 977px;
-      left: 184px;
-     display: flex;
-  }
-
-  div .overlay > .data {
-      margin-top: 397px;
-      width: 977px;
-      left: 184px;
-     display: flex;
-  }
-  
-
-  .line-container {
-  display: flex;
-  align-items: center;
-  }
-
-.line {
-  flex-grow: 1;
-  height: 1px;
-  background: black;
-  position: relative;
-}
-
-.line.arrow-right:after {
-  position: absolute;
-  content: '';
-  bottom: -6px;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid black;
-}
-
-.line.arrow-left:after {
-  position: absolute;
-  content: '';
-  top: -6px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-right: 6px solid black;
-}
-.line-container label {
-  margin: 0 5px;
-}
-
-  </style>
-</head>
-<body>
-  <div class="chartWithOverlay">
-    <div id="balanceamento" style="height: 500px; width: 100%"></div>
-    <div class="overlay">
-      <div class="faixa">
-        <div style="margin-top:55px;">Desequilíbrio Severo</div>
-        <div style="margin-top:36px;">Desequilíbrio Alto</div>
-        <div style="margin-top:61px;">Desequilíbrio Marginal</div>
-        <div style="margin-top:62px;">Desequilíbrio Alto</div>
-        <div style="margin-top:40px;">Desequilíbrio Severo</div>
-      </div>
-      <div class="periodo">
-        <div class="line-container" style="width: 50%;">
-          <span class="line arrow-left"></span>
-          <label>D-1
-          </label>
-          <span class="line arrow-right"></span>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="app.css" rel="stylesheet">
+    <title>Balanceamento</title>
+  </head>
+  <body>
+    <div class="chartWithOverlay">
+      <div id="balanceamento" style="height: 500px; width: 100%"></div>
+      <div class="overlay">
+        <div class="faixa">
+          <div style="margin-top:55px;">Desequilíbrio Severo</div>
+          <div style="margin-top:36px;">Desequilíbrio Alto</div>
+          <div style="margin-top:61px;">Desequilíbrio Marginal</div>
+          <div style="margin-top:62px;">Desequilíbrio Alto</div>
+          <div style="margin-top:40px;">Desequilíbrio Severo</div>
         </div>
-        <div class="line-container" style="width: 50%;">
-          <span class="line arrow-left"></span>
-          <label>D
-          </label>
-          <span class="line arrow-right"></span>
+        <div class="periodo">
+          <div class="line-container" style="width: 50%;">
+            <span class="line arrow-left"></span>
+            <label>D-1
+            </label>
+            <span class="line arrow-right"></span>
+          </div>
+          <div class="line-container" style="width: 50%;">
+            <span class="line arrow-left"></span>
+            <label>D
+            </label>
+            <span class="line arrow-right"></span>
+          </div>
+        </div>
+        <div class="data">
+          <div class="line-container" style="width: 301px;">
+            <span class="line arrow-left"></span>
+            <label>05/02/19
+            </label>
+            <span class="line arrow-right"></span>
+          </div>
+          <div class="line-container" style="width: 398px;">
+            <span class="line arrow-left"></span>
+            <label>06/02/19
+            </label>
+            <span class="line arrow-right"></span>
+          </div>
+          <div class="line-container" style="width: 100px;">
+            <span class="line arrow-left"></span>
+            <label>07/02/19
+            </label>
+            <span class="line arrow-right"></span>
+          </div>
         </div>
       </div>
-      <div class="data">
-        <div class="line-container" style="width: 369px;">
-          <span class="line arrow-left"></span>
-          <label>05/02/2019
-          </label>
-          <span class="line arrow-right"></span>
-        </div>
-        <div class="line-container" style="width: 487px;">
-          <span class="line arrow-left"></span>
-          <label>06/02/2019
-          </label>
-          <span class="line arrow-right"></span>
-        </div>
-        <div class="line-container" style="width: 120px;">
-          <span class="line arrow-left"></span>
-          <label>07/02/2019
-          </label>
-          <span class="line arrow-right"></span>
-        </div>
-      </div>
-   </div>
- </div>
-  <button id="adicionarPonto">Adicionar Ponto</button>
+    </div>
+    <button id="adicionarPonto">Adicionar Ponto</button>
 </html>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="dados.js"></script>

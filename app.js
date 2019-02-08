@@ -1,15 +1,23 @@
-
-google.charts.load('current', {'packages':['corechart'], 'language': 'pt-br'});
-google.charts.setOnLoadCallback(function() { drawChart(dados)});
+google.charts.load('current', {
+  'packages': ['corechart'],
+  'language': 'pt-br'
+});
+google.charts.setOnLoadCallback(function () {
+  drawChart(dados)
+});
 
 var dataTable;
 var options;
 var chart;
 var date_formatter;
+
 function drawChart(dados) {
   dataTable = new google.visualization.DataTable();
   dataTable.addColumn('date', 'Medicao');
-  dataTable.addColumn({type: 'string', role: 'annotation'});
+  dataTable.addColumn({
+    type: 'string',
+    role: 'annotation'
+  });
   dataTable.addColumn('number', 'Estoque');
   dataTable.addColumn('number', 'Zona Superior');
   dataTable.addColumn('number', 'Limite Superior');
@@ -21,17 +29,21 @@ function drawChart(dados) {
   dataTable.addColumn('number', 'Estoque D-1');
   dataTable.addColumn('number', 'Projeção');
 
-  for(i = 0; i < dados.length; i++){
+  for (i = 0; i < dados.length; i++) {
     dataTable.addRow(dados[i]);
   }
 
-  date_formatter = new google.visualization.DateFormat({ 
-      pattern: "dd/MM HH:mm"
+  date_formatter = new google.visualization.DateFormat({
+    pattern: "dd/MM HH:mm"
   });
 
   date_formatter.format(dataTable, 0);
 
   options = {
+    'chartArea': {
+      'width': '80%',
+      left: 80
+    },
     hAxis: {
       format: "HH'h'",
       ticks: [
@@ -53,15 +65,20 @@ function drawChart(dados) {
         new Date(2019, 1, 6, 3, 0),
         new Date(2019, 1, 6, 6, 0)
       ],
-      explorer: {actions: ['dragToZoom', 'rightClickToReset']}
+      explorer: {
+        actions: ['dragToZoom', 'rightClickToReset']
+      }
     },
-    
+
     vAxis: {
       ticks: [-7974, -5316, -2658, 0, 2658, 5316, 7974]
     },
-    crosshair: { trigger: 'both', orientation: 'both' },
+    crosshair: {
+      trigger: 'both',
+      orientation: 'both'
+    },
     curveType: 'function',
-    animation:{
+    animation: {
       startup: true,
       duration: 1000,
       easing: 'in',
@@ -70,7 +87,7 @@ function drawChart(dados) {
     isStacked: true,
     annotation: {
       1: {
-          style: 'line'
+        style: 'line'
       }
     },
     displayAnnotations: true,
@@ -84,22 +101,22 @@ function drawChart(dados) {
         areaOpacity: 0.8,
         color: '#A5D6A7',
         visibleInLegend: false,
-        enableInteractivity: false, 
-        tooltip : false
+        enableInteractivity: false,
+        tooltip: false
       },
       2: {
         areaOpacity: 0.8,
         color: '#DCD68B',
         visibleInLegend: false,
         enableInteractivity: false,
-        tooltip : false
+        tooltip: false
       },
       3: {
         areaOpacity: 0.8,
         color: '#EF9A9A',
         visibleInLegend: false,
         enableInteractivity: false,
-        tooltip : false
+        tooltip: false
       },
       4: {
         areaOpacity: 0,
@@ -107,28 +124,28 @@ function drawChart(dados) {
         lineWidth: 2,
         visibleInLegend: false,
         enableInteractivity: false,
-        tooltip : false
+        tooltip: false
       },
       5: {
         areaOpacity: 0.8,
         color: '#A5D6A7',
         visibleInLegend: false,
         enableInteractivity: false,
-        tooltip : false
+        tooltip: false
       },
       6: {
         areaOpacity: 0.8,
         color: '#DCD68B',
         visibleInLegend: false,
         enableInteractivity: false,
-        tooltip : false
+        tooltip: false
       },
       7: {
         areaOpacity: 0.8,
         color: '#EF9A9A',
         visibleInLegend: false,
         enableInteractivity: false,
-        tooltip : false
+        tooltip: false
       },
       8: {
         color: '#01579B',
@@ -154,24 +171,26 @@ function drawChart(dados) {
 }
 
 var button = document.getElementById('adicionarPonto');
-button.onclick = function() {  
+button.onclick = function () {
   var indexMedicao = 0;
   var ultimaLinha = dataTable.getNumberOfRows();
 
   var ultimaMedicao = dataTable.getValue(ultimaLinha - 1, indexMedicao);
   var copiedDate = new Date(ultimaMedicao);
-  copiedDate.setMinutes(ultimaMedicao.getMinutes()+30);
+  copiedDate.setMinutes(ultimaMedicao.getMinutes() + 30);
 
   var estoqueRandomico = Math.floor(Math.random() * 2658);
 
-  var linha = [[copiedDate, null, null, 2658, 2658, 2658, -7974, -2658, -2658, -2658, null, estoqueRandomico]];
+  var linha = [
+    [copiedDate, null, null, 2658, 2658, 2658, -7974, -2658, -2658, -2658, null, estoqueRandomico]
+  ];
   button.disabled = true;
   google.visualization.events.addListener(chart, 'ready',
-    function() {
+    function () {
       button.disabled = false;
     }
   );
-  dataTable.insertRows(ultimaLinha, linha); 
+  dataTable.insertRows(ultimaLinha, linha);
   date_formatter.format(dataTable, 0);
-  chart.draw(dataTable, options); 
-}  
+  chart.draw(dataTable, options);
+}

@@ -1,0 +1,72 @@
+.chartWithOverlay {
+  position: relative;
+  width: 1000px;
+
+  margin: auto;
+}
+
+.overlay>div {
+  position: absolute;
+  top: 63px;
+  left: 80px;
+  font-size: 15px;
+  color: #444;
+  font-family: 'Arial';
+}
+
+div .overlay>.faixa {
+  font-size: 12px;
+  margin-left: 6px;
+
+}
+
+div .overlay>.periodo {
+  margin-top: 375px;
+  width: 800px;
+  display: flex;
+}
+
+div .overlay>.data {
+  margin-top: 397px;
+  display: flex;
+}
+
+.line-container {
+  display: flex;
+  align-items: center;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background: black;
+  position: relative;
+}
+
+.line.arrow-right:after {
+  position: absolute;
+  content: '';
+  bottom: -6px;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid black;
+}
+
+.line.arrow-left:after {
+  position: absolute;
+  content: '';
+  top: -6px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 6px solid black;
+}
+
+.line-container label {
+  margin: 0 5px;
+}
